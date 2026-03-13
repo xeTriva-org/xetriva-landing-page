@@ -1,0 +1,13 @@
+xetriva page 
+
+1. home page 
+2. About page 
+3. contact us page
+4. footer(privacy /policy page)
+5. Terms/Condition page
+6. package page 
+7. Service page 
+8. Blog page 
+9. Portfolio page 
+10.Prodcut page 
+11.team page 
