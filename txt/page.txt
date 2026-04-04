@@ -11,3 +11,7 @@ xetriva page
 9. Portfolio page 
 10.Prodcut page 
 11.team page 
+
+remove this dependesis
+"react-day-picker": "8.10.1",
+"react-popper": "2.3.0",
