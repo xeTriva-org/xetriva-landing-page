@@ -154,9 +154,9 @@ export function Header() {
                 ) : (
                   <Link
                     key={index}
-                    href={link.path}
+                    href={link.path || "#"}
                     className={`transition-colors font-medium ${
-                      isActive(link.path)
+                      link.path && isActive(link.path)
                         ? "text-purple-600"
                         : "text-gray-700 hover:text-purple-600"
                     }`}
@@ -227,9 +227,9 @@ export function Header() {
                 ) : (
                   <Link
                     key={index}
-                    href={link.path}
+                    href={link.path || "#"}
                     className={`block py-3 px-4 ${
-                      isActive(link.path)
+                      link.path && isActive(link.path)
                         ? "text-purple-600 bg-purple-50"
                         : "text-gray-700 hover:bg-gray-50 hover:text-purple-600"
                     } transition-colors`}

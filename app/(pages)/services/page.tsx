@@ -206,7 +206,7 @@ export default function Services() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl mb-6">Ready to Get Started?</h2>
           <p className="text-xl text-gray-600 mb-8">
-            Let's discuss how our services can help achieve your business
+            Let&apos;s discuss how our services can help achieve your business
             objectives.
           </p>
           <a
