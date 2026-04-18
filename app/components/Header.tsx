@@ -1,4 +1,5 @@
 "use client";
+import Script from "next/script";
 import { Menu, X, ChevronDown, Calendar } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import gsap from "gsap";
@@ -78,27 +79,18 @@ export function Header() {
     return pathname === path || pathname.startsWith(path + "/");
   };
 
-  const handleScheduleCall = () => {
-    // Open Calendly in a popup
-    if (typeof window !== "undefined" && (window as any).Calendly) {
-      (window as any).Calendly.initPopupWidget({
-        url: "https://calendly.com/your-calendly-link",
-      });
-    } else {
-      // Fallback to opening in new tab
-      window.open("https://calendly.com/your-calendly-link", "_blank");
-    }
-  };
-
   return (
     <>
       {/* Calendly Script */}
-      <script
-        type="text/javascript"
-        src="https://assets.calendly.com/assets/external/widget.js"
-        async
-      />
 
+      <Script
+        src="https://assets.calendly.com/assets/external/widget.js"
+        strategy="afterInteractive"
+      />
+      <link
+        href="https://assets.calendly.com/assets/external/widget.css"
+        rel="stylesheet"
+      />
       <header
         ref={headerRef}
         className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm"
@@ -109,7 +101,7 @@ export function Header() {
             <Link href="/" className="flex items-center">
               <Image
                 ref={logoRef}
-                src={"/assets/xetriva-logo.jpg"}
+                src={"/assets/xetriva-logo-main.jpg"}
                 alt="Xetriva Logo"
                 className="h-12 w-auto"
                 width={0}
@@ -167,13 +159,16 @@ export function Header() {
               )}
 
               {/* Schedule a Call Button */}
-              <button
-                onClick={handleScheduleCall}
-                className="flex items-center space-x-2 bg-gradient-to-r from-purple-600 to-violet-600 text-white px-6 py-3 rounded-lg hover:from-purple-700 hover:to-violet-700 transition-all shadow-md hover:shadow-lg transform hover:scale-105"
+              <Link
+                href={"https://calendly.com/swapnilahmedshishir2018/30min"}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <Calendar className="w-5 h-5" />
-                <span>Schedule a Call</span>
-              </button>
+                <button className="flex items-center space-x-2 bg-gradient-to-r from-purple-600 to-violet-600 text-white px-6 py-3 rounded-lg hover:from-purple-700 hover:to-violet-700 transition-all shadow-md hover:shadow-lg transform hover:scale-105 mouse-pointer">
+                  <Calendar className="w-5 h-5" />
+                  <span>Schedule a Call</span>
+                </button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -242,16 +237,21 @@ export function Header() {
 
               {/* Mobile Schedule Button */}
               <div className="px-4 pt-4">
-                <button
-                  onClick={() => {
-                    handleScheduleCall();
-                    setMobileMenuOpen(false);
-                  }}
-                  className="flex items-center justify-center space-x-2 w-full bg-gradient-to-r from-purple-600 to-violet-600 text-white px-6 py-3 rounded-lg hover:from-purple-700 hover:to-violet-700 transition-all"
+                <Link
+                  href={"https://calendly.com/swapnilahmedshishir2018/30min"}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <Calendar className="w-5 h-5" />
-                  <span>Schedule a Call</span>
-                </button>
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                    }}
+                    className="flex items-center justify-center space-x-2 w-full bg-gradient-to-r from-purple-600 to-violet-600 text-white px-6 py-3 rounded-lg hover:from-purple-700 hover:to-violet-700 transition-all"
+                  >
+                    <Calendar className="w-5 h-5" />
+                    <span>Schedule a Call</span>
+                  </button>
+                </Link>
               </div>
             </div>
           )}
