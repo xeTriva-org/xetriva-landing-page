@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "xeTriva - All in one solutions",
+  title: "XeTriva - All in one solutions",
   description:
     "xeTriva is a web and software development company specializing in scalable, high-performance solutions, including custom web apps, e-commerce platforms, SaaS products, and modern UI/UX design.",
 };

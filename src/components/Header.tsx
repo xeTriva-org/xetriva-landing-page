@@ -1,8 +1,7 @@
 "use client";
 import Script from "next/script";
 import { Menu, X, ChevronDown, Calendar } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
-import gsap from "gsap";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
@@ -15,42 +14,6 @@ export function Header() {
   const headerRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLImageElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // GSAP animation on mount
-    if (headerRef.current && logoRef.current && navRef.current) {
-      gsap.fromTo(
-        headerRef.current,
-        { y: -100, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" },
-      );
-
-      gsap.fromTo(
-        logoRef.current,
-        { scale: 0, rotation: -180 },
-        {
-          scale: 1,
-          rotation: 0,
-          duration: 1,
-          ease: "back.out(1.7)",
-          delay: 0.3,
-        },
-      );
-
-      gsap.fromTo(
-        navRef.current.children,
-        { y: -20, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-          stagger: 0.1,
-          ease: "power2.out",
-          delay: 0.5,
-        },
-      );
-    }
-  }, []);
 
   const navLinks = [
     { path: "/", label: "Home" },
@@ -134,7 +97,7 @@ export function Header() {
                             href={item.path}
                             className={`block px-4 py-2 transition-colors ${
                               isActive(item.path)
-                                ? "text-purple-600 bg-purple-50"
+                                ? "text-[#0e6b9e]"
                                 : "text-gray-700 hover:bg-gray-50 hover:text-purple-600"
                             }`}
                           >
@@ -150,7 +113,7 @@ export function Header() {
                     href={link.path || "#"}
                     className={`transition-colors font-medium ${
                       link.path && isActive(link.path)
-                        ? "text-purple-600"
+                        ? "text-[#0e6b9e] rounded px-2 py-1"
                         : "text-gray-700 hover:text-purple-600"
                     }`}
                   >
@@ -158,18 +121,6 @@ export function Header() {
                   </Link>
                 ),
               )}
-
-              {/* Schedule a Call Button */}
-              <Link
-                href={"https://calendly.com/swapnilahmedshishir2018/30min"}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className="flex items-center space-x-2 bg-gradient-to-r from-purple-600 to-violet-600 text-white px-6 py-3 rounded-lg hover:from-purple-700 hover:to-violet-700 transition-all shadow-md hover:shadow-lg transform hover:scale-105 mouse-pointer">
-                  <Calendar className="w-5 h-5" />
-                  <span>Schedule a Call</span>
-                </button>
-              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -209,7 +160,7 @@ export function Header() {
                             href={item.path}
                             className={`block py-2 px-4 ${
                               isActive(item.path)
-                                ? "text-purple-600 bg-purple-50"
+                                ? "text-[#0e6b9e]"
                                 : "text-gray-700 hover:text-purple-600"
                             }`}
                             onClick={() => setMobileMenuOpen(false)}
@@ -226,7 +177,7 @@ export function Header() {
                     href={link.path || "#"}
                     className={`block py-3 px-4 ${
                       link.path && isActive(link.path)
-                        ? "text-purple-600 bg-purple-50"
+                        ? "text-[#0e6b9e]"
                         : "text-gray-700 hover:bg-gray-50 hover:text-purple-600"
                     } transition-colors`}
                     onClick={() => setMobileMenuOpen(false)}
@@ -235,25 +186,6 @@ export function Header() {
                   </Link>
                 ),
               )}
-
-              {/* Mobile Schedule Button */}
-              <div className="px-4 pt-4">
-                <Link
-                  href={"https://calendly.com/swapnilahmedshishir2018/30min"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <button
-                    onClick={() => {
-                      setMobileMenuOpen(false);
-                    }}
-                    className="flex items-center justify-center space-x-2 w-full bg-gradient-to-r from-purple-600 to-violet-600 text-white px-6 py-3 rounded-lg hover:from-purple-700 hover:to-violet-700 transition-all"
-                  >
-                    <Calendar className="w-5 h-5" />
-                    <span>Schedule a Call</span>
-                  </button>
-                </Link>
-              </div>
             </div>
           )}
         </nav>
