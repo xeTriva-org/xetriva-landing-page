@@ -1,17 +1,183 @@
-xetriva page 
+You are a senior full-stack developer and award-winning UI/UX designer.
 
-1. home page 
-2. About page 
-3. contact us page
-4. footer(privacy /policy page)
-5. Terms/Condition page
-6. package page 
-7. Service page 
-8. Blog page 
-9. Portfolio page 
-10.Prodcut page 
-11.team page 
+Your task is to design and develop a **premium, modern, high-converting company portfolio website** for a tech company named **Xetriva** using **Next.js (App Router)** and **Tailwind CSS**.
 
-remove this dependesis
-"react-day-picker": "8.10.1",
-"react-popper": "2.3.0",
+## 🎯 Core Requirements:
+
+* Clean, premium, modern UI (inspired by SaaS & startup landing pages)
+* write a all section text then means this is human write article and text. 
+* use a copy write a free image and video
+* Fully responsive (mobile, tablet, desktop)
+* Smooth animations (Framer Motion and gsap preferred)
+* SEO optimized (Next.js metadata, structured content)
+* Fast performance (lazy loading, optimized images)
+* Scalable and reusable component-based architecture
+* Dark + Light mode support
+* Accessibility best practices (ARIA, semantic HTML)
+
+---
+
+## 📌 Pages & Features:
+
+### 1. Home Page (High Priority - Conversion Focused)
+
+Design a visually stunning homepage with the following sections:
+
+* Hero section (strong headline, CTA, animated elements)
+* Trusted clients / brands section
+* Services overview (cards with icons)
+* Featured projects / portfolio preview
+* Why choose us (value propositions)
+* Process workflow (step-by-step)
+* Pricing/packages highlight
+* Testimonials / client reviews
+* Blog preview
+* Call-to-action banner
+* Footer
+
+---
+
+### 2. About Page
+
+* Company introduction
+* Mission & Vision
+* Core values
+* Company journey / timeline
+* Team preview
+* CTA section
+
+---
+
+### 3. Services Page
+
+Services include:
+
+* Website Development
+* App Development
+* Web Application Development
+* DevOps Services
+* UI/UX Design
+* Project Planning
+
+Each service should have:
+
+* Icon
+* Description
+* Benefits
+* CTA
+
+---
+
+### 4. Package Page (Important)
+
+Create a pricing system with:
+
+* Multiple packages (Bug Fix, Hourly, Full Website, Custom Software)
+* Highlighted pricing (e.g., 500 BDT/hour)
+* Feature comparison table
+* “Best Value” badge
+* CTA buttons
+
+---
+
+### 5. Portfolio Page
+
+* Grid layout of projects
+* Filter by category/technology
+* Each project includes:
+
+  * Image / video
+  * Tech stack
+  * Problem & solution
+  * Description
+* Detail page for each project
+
+---
+
+### 6. Product Page
+
+* Product showcase (cards/grid)
+* Each product includes:
+
+  * Image/video
+  * Overview
+  * Pricing + discount
+  * Fake sale badge (for marketing)
+  * Demo request / contact CTA
+
+---
+
+### 7. Blog Page
+
+* Blog listing (cards)
+* Categories/tags
+* Featured blog section
+* Blog details page
+* Use for case studies, tech blogs, company updates
+
+---
+
+### 8. Team Page
+
+* Team grid layout
+* Member image, name, designation
+* Optional social links
+
+---
+
+### 9. Contact Page
+
+* Contact form (name, email, message)
+* Company address
+* Embedded map
+* Social links
+
+---
+
+### 10. Legal Pages
+
+* Privacy Policy
+* Terms & Conditions
+
+---
+
+## 🧩 Layout Components:
+
+* Sticky Navbar (with dropdown menu)
+* Responsive Footer (multi-column links)
+* Reusable UI components (cards, buttons, sections)
+
+---
+
+## 🎨 Design Guidelines:
+
+* Use modern spacing, typography, and color hierarchy
+* Use Tailwind CSS with custom theme config
+* Subtle gradients and glassmorphism where appropriate
+* Smooth hover effects and transitions
+* Use icons (Lucide or Heroicons)
+
+---
+
+## ⚙️ Tech Stack:
+
+* Next.js (App Router)
+
+* Tailwind CSS
+* Framer Motion (animations)
+* Optional: CMS-ready structure (for blogs/products)
+
+---
+
+## 📁 Output Expectations:
+
+* Folder structure (clean & scalable)
+* Reusable components
+* Example pages implementation
+* Clean, readable, production-ready code
+
+---
+
+## 🚀 Goal:
+
+Build a **premium-level SaaS-style company website** that impresses clients and increases conversions.

@@ -101,7 +101,7 @@ export function Header() {
             <Link href="/" className="flex items-center">
               <Image
                 ref={logoRef}
-                src={"/assets/xetriva-logo-main.jpg"}
+                src={"/assets/xetriva-logo-main.png"}
                 alt="Xetriva Logo"
                 className="h-12 w-auto"
                 width={0}

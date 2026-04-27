@@ -19,7 +19,7 @@ export function Footer() {
           {/* Company Info */}
           <div>
             <Image
-              src={"/assets/xetriva-logo-main.jpg"}
+              src={"/assets/xetriva-logo-main.png"}
               alt="Xetriva Logo"
               className="h-10 w-auto mb-4"
               width={0}
