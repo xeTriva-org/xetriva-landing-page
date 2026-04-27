@@ -30,9 +30,9 @@ export function Header() {
             <Image
               src={logo}
               alt="Logo"
-              className="h-14 w-auto"
-              width={40}
-              height={40}
+              className="h-15 w-auto"
+              width={44}
+              height={44}
             />
           </Link>
         </div>
