@@ -11,7 +11,7 @@ import {
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ImageWithFallback } from "./components/figma/ImageWithFallback";
+import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
