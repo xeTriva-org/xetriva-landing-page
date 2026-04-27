@@ -15,9 +15,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Xetriva | Modern Web & Software Development Company",
+  title: "xeTriva - All in one solutions",
   description:
-    "Xetriva is a leading web and software development company delivering scalable, high-performance solutions for businesses worldwide. We specialize in custom web applications, e-commerce platforms, SaaS products, and modern UI/UX design. Our expert team leverages cutting-edge technologies to build secure, fast, and user-focused digital experiences that drive growth and innovation.",
+    "xeTriva is a web and software development company specializing in scalable, high-performance solutions, including custom web apps, e-commerce platforms, SaaS products, and modern UI/UX design.",
 };
 
 export default function RootLayout({
@@ -32,10 +32,7 @@ export default function RootLayout({
       >
         <div className="min-h-screen flex flex-col">
           <Header />
-          <main className="flex-1">
-            {children}
-            {/* <Outlet /> */}
-          </main>
+          <main className="flex-1">{children}</main>
           <Footer />
         </div>
       </body>

@@ -6,6 +6,7 @@ import gsap from "gsap";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import logo from "../../public/logo/xetriva2.png";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -101,9 +102,9 @@ export function Header() {
             <Link href="/" className="flex items-center">
               <Image
                 ref={logoRef}
-                src={"/assets/xetriva-logo-main.png"}
+                src={logo}
                 alt="Xetriva Logo"
-                className="h-12 w-auto"
+                className="h-16 w-auto"
                 width={0}
                 height={0}
               />
