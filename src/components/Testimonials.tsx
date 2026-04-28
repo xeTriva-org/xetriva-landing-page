@@ -5,31 +5,24 @@ import { useState } from "react";
 export function Testimonials() {
   const testimonials = [
     {
-      name: "Sarah Johnson",
-      role: "CEO, TechStart Inc.",
+      name: "Md Jalal Uddin",
+      role: "Managing Director, TS Geosystem BD",
       content:
-        "XeTriva transformed our business with their exceptional web development services. Their team's expertise and dedication resulted in a platform that exceeded our expectations.",
+        "XeTriva delivered our GIS software solution ahead of schedule. Their technical depth and understanding of our geospatial needs was outstanding. We've seen a 40% improvement in our data processing efficiency.",
       rating: 5,
     },
     {
-      name: "Michael Chen",
-      role: "Product Manager, InnovateLabs",
+      name: "FaizyLegend",
+      role: "Actor, Pakistan Film Industry",
       content:
-        "Working with XeTriva was a game-changer for our SaaS product. They delivered high-quality work on time and provided valuable insights throughout the development process.",
+        "Amazing work by the XeTriva team! They built my official website and fan engagement platform. The design is stunning and the performance is flawless. My fans love the new experience. Highly recommend their services!",
       rating: 5,
     },
     {
-      name: "Emily Rodriguez",
-      role: "Founder, GreenEarth",
+      name: "Shahidul Islam",
+      role: "Founder, TechBangla Solutions",
       content:
-        "The team at XeTriva understood our vision perfectly and brought it to life. Our e-commerce platform has seen a 200% increase in sales since launch!",
-      rating: 5,
-    },
-    {
-      name: "David Kim",
-      role: "CTO, DataFlow Systems",
-      content:
-        "Exceptional technical expertise and great communication throughout the project. Highly recommended for any software development needs.",
+        "One of the best IT teams in Bangladesh! XeTriva developed our entire ERP system from scratch. Professional, punctual, and passionate about their work. Will definitely work with them again.",
       rating: 5,
     },
   ];
@@ -58,7 +51,7 @@ export function Testimonials() {
         </div>
 
         {/* Desktop View - Grid */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
