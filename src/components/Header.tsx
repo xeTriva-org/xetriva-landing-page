@@ -40,13 +40,12 @@ export function Header() {
   return (
     <>
       <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-18 lg:h-20">
-          {/* Logo */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-18">
           <Link href="/" className="shrink-0 flex items-center gap-2">
             <Image
               src={logo}
               alt="Xetriva Logo"
-              className="h-9 sm:h-10 lg:h-12 w-auto"
+              className="h-12 lg:h-16 w-auto"
               width={48}
               height={48}
               priority
