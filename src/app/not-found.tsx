@@ -6,26 +6,39 @@ export default function NotFound() {
   return (
     <div className="min-h-[60vh] flex items-center justify-center px-4">
       <div className="text-center">
-        <h1 className="text-9xl font-bold text-purple-600 mb-4">404</h1>
-        <h2 className="text-3xl md:text-4xl mb-4">Page Not Found</h2>
-        <p className="text-xl text-gray-600 mb-8 max-w-md mx-auto">
-          Sorry, the page you're looking for doesn't exist or has been moved.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link
-            href="/"
-            className="inline-flex items-center justify-center px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors shadow-lg hover:shadow-xl transform hover:scale-105"
-          >
-            <Home className="w-5 h-5 mr-2" />
-            Go to Home
-          </Link>
-          <button
-            onClick={() => window.history.back()}
-            className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
-          >
-            <ArrowLeft className="w-5 h-5 mr-2" />
-            Go Back
-          </button>
+        <div className="relative inline-block">
+          <h1 className="text-9xl md:text-9xl font-bold text-gray-200 mb-4">
+            404
+          </h1>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-24 h-24 md:w-32 md:h-32 bg-[#1090af]/10 rounded-full blur-2xl"></div>
+          </div>
+        </div>
+        <div className="relative z-10">
+          <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-3">
+            Page Not Found
+          </h2>
+          <div className="w-20 h-0.5 bg-[#1090af] mx-auto mb-5"></div>
+          <p className="text-base md:text-lg text-gray-500 mb-8 max-w-md mx-auto">
+            Sorry, the page you&apos;re looking for doesn&apos;t exist or has
+            been moved.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/"
+              className="inline-flex items-center justify-center px-6 py-3 bg-[#1090af] text-white rounded-lg hover:bg-[#0e6b9e] transition-all duration-300 shadow-md hover:shadow-lg"
+            >
+              <Home className="w-4 h-4 mr-2" />
+              Go to Home
+            </Link>
+            <button
+              onClick={() => window.history.back()}
+              className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:border-[#1090af] hover:text-[#1090af] transition-all duration-300"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2" />
+              Go Back
+            </button>
+          </div>
         </div>
       </div>
     </div>

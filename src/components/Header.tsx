@@ -16,7 +16,7 @@ export function Header() {
     { path: "/", label: "Home" },
     { path: "/solutions", label: "Solutions" },
     { path: "/company", label: "Company" },
-    { path: "/blog", label: "Blog" },
+    { path: "/review", label: "Review" },
   ];
 
   const isActive = (path: string) => {
@@ -174,9 +174,9 @@ export function Header() {
           <Link
             href="/contact"
             onClick={() => setMenuOpen(false)}
-            className="shrink-0"
+            className="shrink-0 cursor-pointer"
           >
-            <button className="bg-[#1090af] hover:bg-[#0e6b9e] active:scale-[0.97] text-white font-semibold px-5 py-2.5 rounded-lg transition-all text-sm whitespace-nowrap">
+            <button className="bg-[#1090af] cursor-pointer hover:bg-[#0e6b9e] active:scale-[0.97] text-white font-semibold px-5 py-2.5 rounded-lg transition-all text-sm whitespace-nowrap">
               Contact Us
             </button>
           </Link>
