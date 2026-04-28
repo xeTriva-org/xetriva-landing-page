@@ -52,7 +52,8 @@ export function Testimonials() {
             What Our Clients Say
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Don't just take our word for it - hear from our satisfied clients
+            Don&lsquo;t just take our word for it - hear from our satisfied
+            clients
           </p>
         </div>
 
@@ -86,7 +87,7 @@ export function Testimonials() {
                 ))}
               </div>
               <p className="text-gray-600 text-sm leading-relaxed">
-                "{testimonial.content}"
+                &lsquo;{testimonial.content}&lsquo;
               </p>
             </div>
           ))}
@@ -120,7 +121,7 @@ export function Testimonials() {
               ))}
             </div>
             <p className="text-gray-600 leading-relaxed">
-              "{testimonials[activeIndex].content}"
+              &lsquo;{testimonials[activeIndex].content}&lsquo;
             </p>
           </div>
 
