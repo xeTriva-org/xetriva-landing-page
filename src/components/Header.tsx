@@ -16,7 +16,6 @@ export function Header() {
     { path: "/", label: "Home", section: "banner" },
     { path: "/solutions", label: "Solutions", section: "solutions" },
     { path: "/company", label: "Company", section: "company" },
-    { path: "/team", label: "Team", section: "team" },
     { path: "/review", label: "Review", section: "testimonials" },
   ];
 
@@ -33,10 +32,12 @@ export function Header() {
     link: { path: string; label: string; section: string },
   ) => {
     if (pathname === "/") {
+      // If on homepage, scroll to section
       e.preventDefault();
       scrollToSection(link.section);
       setMenuOpen(false);
     }
+    // If on different page, let Next.js handle the navigation
   };
 
   const isActive = (path: string) => {
@@ -44,10 +45,18 @@ export function Header() {
     return pathname === path || pathname.startsWith(path + "/");
   };
 
-  // Close menu on route change - only this effect remains
+  // Close menu on route change
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
   return (
     <>
@@ -64,7 +73,7 @@ export function Header() {
             />
           </Link>
 
-          {/* Desktop Nav */}
+          {/* Desktop Nav — hidden on mobile */}
           <nav className="hidden md:flex flex-1 justify-center">
             <ul className="flex items-center gap-6 lg:gap-8">
               {navLinks.map((link) => (
@@ -135,7 +144,7 @@ export function Header() {
         </div>
       </header>
 
-      {/* Mobile menu overlay */}
+      {/* Mobile menu overlay + drawer */}
       <div
         className={`fixed inset-0 z-40 bg-black/30 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
           menuOpen
@@ -146,7 +155,7 @@ export function Header() {
         aria-hidden
       />
 
-      {/* Mobile drawer */}
+      {/* Slide-down drawer */}
       <div
         className={`fixed top-16 left-0 right-0 z-40 bg-white border-b border-gray-200 shadow-xl transition-all duration-300 ease-in-out md:hidden ${
           menuOpen
