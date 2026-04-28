@@ -1,4 +1,4 @@
-export function HeroBanner() {
+export function Banner() {
   return (
     <section className="bg-white py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
