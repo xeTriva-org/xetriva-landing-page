@@ -13,29 +13,41 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navLinks = [
-    { path: "/", label: "Home" },
-    { path: "/solutions", label: "Solutions" },
-    { path: "/company", label: "Company" },
-    { path: "/review", label: "Review" },
+    { path: "/", label: "Home", section: "banner" },
+    { path: "/solutions", label: "Solutions", section: "solutions" },
+    { path: "/company", label: "Company", section: "company" },
+    { path: "/team", label: "Team", section: "team" },
+    { path: "/review", label: "Review", section: "testimonials" },
   ];
+
+  // Smooth scroll to section
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleNavigation = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    link: { path: string; label: string; section: string },
+  ) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      scrollToSection(link.section);
+      setMenuOpen(false);
+    }
+  };
 
   const isActive = (path: string) => {
     if (path === "/") return pathname === "/";
     return pathname === path || pathname.startsWith(path + "/");
   };
 
-  // Close menu on route change
+  // Close menu on route change - only this effect remains
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
-
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [menuOpen]);
 
   return (
     <>
@@ -52,21 +64,34 @@ export function Header() {
             />
           </Link>
 
-          {/* Desktop Nav — hidden on mobile */}
+          {/* Desktop Nav */}
           <nav className="hidden md:flex flex-1 justify-center">
             <ul className="flex items-center gap-6 lg:gap-8">
               {navLinks.map((link) => (
                 <li key={link.path}>
-                  <Link
-                    href={link.path}
-                    className={`text-sm lg:text-[15px] font-medium transition-colors duration-150 ${
-                      isActive(link.path)
-                        ? "text-[#0e6b9e]"
-                        : "text-gray-700 hover:text-[#0e6b9e]"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
+                  {link.path === "/" ? (
+                    <button
+                      onClick={() => scrollToSection(link.section)}
+                      className={`text-sm lg:text-[15px] font-medium transition-colors duration-150 cursor-pointer ${
+                        isActive(link.path)
+                          ? "text-[#0e6b9e]"
+                          : "text-gray-700 hover:text-[#0e6b9e]"
+                      }`}
+                    >
+                      {link.label}
+                    </button>
+                  ) : (
+                    <Link
+                      href={link.path}
+                      className={`text-sm lg:text-[15px] font-medium transition-colors duration-150 ${
+                        isActive(link.path)
+                          ? "text-[#0e6b9e]"
+                          : "text-gray-700 hover:text-[#0e6b9e]"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -83,7 +108,7 @@ export function Header() {
               </span>
             </div>
             <Link href="/contact">
-              <button className="bg-[#1090af] hover:bg-[#0e6b9e] active:scale-[0.97] text-white font-semibold px-5 py-2.5 rounded-lg transition-all text-sm whitespace-nowrap">
+              <button className="bg-[#1090af] hover:bg-[#0e6b9e] active:scale-[0.97] text-white font-semibold px-5 py-2.5 rounded-lg transition-all text-sm whitespace-nowrap cursor-pointer">
                 Contact Us
               </button>
             </Link>
@@ -92,7 +117,7 @@ export function Header() {
           {/* Tablet: CTA only */}
           <div className="hidden md:flex lg:hidden shrink-0">
             <Link href="/contact">
-              <button className="bg-[#1090af] hover:bg-[#0e6b9e] text-white font-semibold px-4 py-2 rounded-lg transition-colors text-sm">
+              <button className="bg-[#1090af] hover:bg-[#0e6b9e] text-white font-semibold px-4 py-2 rounded-lg transition-colors text-sm cursor-pointer">
                 Contact Us
               </button>
             </Link>
@@ -100,7 +125,7 @@ export function Header() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden flex items-center justify-center w-9 h-9 rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors"
+            className="md:hidden flex items-center justify-center w-9 h-9 rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50 transition-colors cursor-pointer"
             onClick={() => setMenuOpen((v) => !v)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
@@ -110,8 +135,7 @@ export function Header() {
         </div>
       </header>
 
-      {/* Mobile menu overlay + drawer */}
-      {/* Backdrop */}
+      {/* Mobile menu overlay */}
       <div
         className={`fixed inset-0 z-40 bg-black/30 backdrop-blur-sm transition-opacity duration-300 md:hidden ${
           menuOpen
@@ -122,7 +146,7 @@ export function Header() {
         aria-hidden
       />
 
-      {/* Slide-down drawer */}
+      {/* Mobile drawer */}
       <div
         className={`fixed top-16 left-0 right-0 z-40 bg-white border-b border-gray-200 shadow-xl transition-all duration-300 ease-in-out md:hidden ${
           menuOpen
@@ -130,34 +154,54 @@ export function Header() {
             : "-translate-y-4 opacity-0 pointer-events-none"
         }`}
       >
-        {/* Nav links */}
         <nav className="px-4 pt-2 pb-1">
           <ul className="flex flex-col">
             {navLinks.map((link) => (
               <li key={link.path}>
-                <Link
-                  href={link.path}
-                  onClick={() => setMenuOpen(false)}
-                  className={`flex items-center justify-between px-3 py-3 rounded-xl text-[15px] font-medium transition-all duration-150 ${
-                    isActive(link.path)
-                      ? "text-[#0e6b9e] bg-blue-50"
-                      : "text-gray-700 hover:text-[#0e6b9e] hover:bg-gray-50"
-                  }`}
-                >
-                  {link.label}
-                  <ChevronRight
-                    size={16}
-                    className={
-                      isActive(link.path) ? "text-[#0e6b9e]" : "text-gray-300"
-                    }
-                  />
-                </Link>
+                {link.path === "/" ? (
+                  <button
+                    onClick={() => {
+                      scrollToSection(link.section);
+                      setMenuOpen(false);
+                    }}
+                    className={`w-full flex items-center justify-between px-3 py-3 rounded-xl text-[15px] font-medium transition-all duration-150 cursor-pointer ${
+                      isActive(link.path)
+                        ? "text-[#0e6b9e] bg-blue-50"
+                        : "text-gray-700 hover:text-[#0e6b9e] hover:bg-gray-50"
+                    }`}
+                  >
+                    {link.label}
+                    <ChevronRight
+                      size={16}
+                      className={
+                        isActive(link.path) ? "text-[#0e6b9e]" : "text-gray-300"
+                      }
+                    />
+                  </button>
+                ) : (
+                  <Link
+                    href={link.path}
+                    onClick={() => setMenuOpen(false)}
+                    className={`flex items-center justify-between px-3 py-3 rounded-xl text-[15px] font-medium transition-all duration-150 ${
+                      isActive(link.path)
+                        ? "text-[#0e6b9e] bg-blue-50"
+                        : "text-gray-700 hover:text-[#0e6b9e] hover:bg-gray-50"
+                    }`}
+                  >
+                    {link.label}
+                    <ChevronRight
+                      size={16}
+                      className={
+                        isActive(link.path) ? "text-[#0e6b9e]" : "text-gray-300"
+                      }
+                    />
+                  </Link>
+                )}
               </li>
             ))}
           </ul>
         </nav>
 
-        {/* Divider + footer */}
         <div className="mx-4 border-t border-gray-100 mt-1 pt-4 pb-5 flex items-center justify-between gap-3">
           <div className="flex flex-col gap-1 min-w-0">
             <span className="bg-gray-100 text-[11px] px-2.5 py-0.5 rounded font-medium text-gray-600 w-fit">
