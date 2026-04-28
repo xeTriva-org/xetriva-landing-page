@@ -1,5 +1,6 @@
 {
-  "name": "xetriva-client",
+  "type": "module",
+  "name": "xetriva-landing-page",
   "version": "0.1.0",
   "private": true,
   "scripts": {

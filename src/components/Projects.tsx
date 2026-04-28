@@ -2,13 +2,35 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { ExternalLink, Github, ChevronRight, X } from "lucide-react";
+import { ChevronRight, X } from "lucide-react";
+
+// Define types
+interface TechnologyStack {
+  frontend: string[];
+  backend: string[];
+  database?: string[];
+  devops?: string[];
+  others?: string[];
+}
+
+interface Project {
+  id: number;
+  title: string;
+  category: string;
+  description: string;
+  longDescription: string;
+  icon: string;
+  imageFolder: string;
+  images: string[];
+  technologies: TechnologyStack;
+  features: string[];
+}
 
 export function Projects() {
-  const [selectedProject, setSelectedProject] = useState(null);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
-  const projects = [
+  const projects: Project[] = [
     {
       id: 1,
       title: "TS-Geosystems Bangladesh",
@@ -170,7 +192,7 @@ export function Projects() {
     },
   ];
 
-  const openModal = (project) => {
+  const openModal = (project: Project) => {
     setSelectedProject(project);
     setCurrentImageIndex(0);
     document.body.style.overflow = "hidden";
@@ -211,7 +233,7 @@ export function Projects() {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
+            {projects.map((project) => (
               <div
                 key={project.id}
                 className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 border border-gray-100"
@@ -462,29 +484,26 @@ export function Projects() {
                         </div>
                       </div>
                     )}
+                    {selectedProject.technologies.others && (
+                      <div>
+                        <p className="text-sm font-medium text-gray-700 mb-2">
+                          Others
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {selectedProject.technologies.others.map(
+                            (tech, idx) => (
+                              <span
+                                key={idx}
+                                className="text-xs bg-gray-50 text-gray-700 px-2 py-1 rounded border border-gray-200"
+                              >
+                                {tech}
+                              </span>
+                            ),
+                          )}
+                        </div>
+                      </div>
+                    )}
                   </div>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex gap-4 pt-4 border-t border-gray-200">
-                  <a
-                    href={selectedProject.liveLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-[#1090af] text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-[#0e6b9e] transition flex items-center gap-2"
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                    Live Demo
-                  </a>
-                  <a
-                    href={selectedProject.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="border border-gray-300 text-gray-700 px-6 py-2.5 rounded-lg font-semibold hover:border-[#1090af] hover:text-[#1090af] transition flex items-center gap-2"
-                  >
-                    <Github className="w-4 h-4" />
-                    View Code
-                  </a>
                 </div>
               </div>
             </div>
