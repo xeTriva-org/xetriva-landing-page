@@ -19,7 +19,6 @@ interface Project {
   category: string;
   description: string;
   longDescription: string;
-  icon: string;
   imageFolder: string;
   images: string[];
   technologies: TechnologyStack;
@@ -53,7 +52,6 @@ export function Projects() {
         "A fully dynamic e-commerce platform featuring a custom admin dashboard, secure SSLCommerz payment gateway, and a robust product bank. Optimized for secure transactions, lead generation, and SEO.",
       longDescription:
         "TS-Geosystems Bangladesh is a comprehensive solution for managing surveying equipment sales, rentals, and services. The platform includes a powerful admin dashboard for inventory management, order processing, and customer management. With SSLCommerz integration, all transactions are secure and PCI compliant.",
-      icon: "🔭",
       imageFolder: "/projects/tsgeosystem",
       images: [
         "tsgb.png",
@@ -111,7 +109,7 @@ export function Projects() {
         "A complete SaaS-based vehicle tracking ecosystem for real-time fleet monitoring using GPS devices with SIM integration. Features include live tracking, geo-fencing, route history, and subscription management.",
       longDescription:
         "Katsana is an enterprise-level fleet management solution that includes multiple independent systems such as live tracking dashboard, analytics & reporting engine, CRM, payment system, partner/dealer management, and marketing landing page. Designed for scalability and performance.",
-      icon: "🚗",
+  
       imageFolder: "/projects/katsana",
       images: ["1.png", "2.jpeg", "3.jpeg", "4.jpeg", "5.jpeg"],
       technologies: {
@@ -160,7 +158,7 @@ export function Projects() {
         "The official personal website for a Pakistani model, serving as a modern portfolio and interactive fan hub with fan art gallery and community engagement sections.",
       longDescription:
         "FaizyLegend's official website showcases portfolio work and provides an engaging platform for fans. Features include a stunning gallery, fan art submissions, community discussion sections, and direct contact capabilities.",
-      icon: "⭐",
+     
       imageFolder: "/projects/faizylegend",
       images: [
         "faizylegend.png",
@@ -269,7 +267,6 @@ export function Projects() {
 
                 <div className="p-6">
                   <div className="flex items-center gap-2 mb-3">
-                    <span className="text-2xl">{project.icon}</span>
                     <p className="text-xs text-[#1090af] font-semibold bg-[#1090af]/10 px-2 py-1 rounded">
                       {project.category}
                     </p>
@@ -302,7 +299,7 @@ export function Projects() {
 
                   <button
                     onClick={() => openModal(project)}
-                    className="text-[#1090af] font-semibold hover:text-[#0e6b9e] transition flex items-center gap-2 text-sm"
+                    className="text-[#1090af] cursor-pointer font-semibold hover:text-[#0e6b9e] transition flex items-center gap-2 text-sm"
                   >
                     View Details
                     <ChevronRight className="w-4 h-4" />
@@ -337,7 +334,7 @@ export function Projects() {
                 </div>
                 <button
                   onClick={closeModal}
-                  className="w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition"
+                  className="w-10 h-10 rounded-full cursor-pointer bg-gray-100 hover:bg-gray-200 flex items-center justify-center transition"
                 >
                   <X className="w-5 h-5" />
                 </button>

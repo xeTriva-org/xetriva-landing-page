@@ -14,35 +14,39 @@ export function Header() {
 
   const navLinks = [
     { path: "/", label: "Home", section: "banner" },
-    { path: "/solutions", label: "Solutions", section: "solutions" },
-    { path: "/company", label: "Company", section: "company" },
-    { path: "/review", label: "Review", section: "testimonials" },
+    { path: "/", label: "Solutions", section: "solutions" },
+    { path: "/", label: "Projects", section: "company" },
+    { path: "/", label: "Testimonials", section: "testimonials" },
+    { path: "/", label: "Contact", section: "contact" },
   ];
 
   // Smooth scroll to section
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
 
   const handleNavigation = (
-    e: React.MouseEvent<HTMLAnchorElement>,
+    e:
+      | React.MouseEvent<HTMLAnchorElement>
+      | React.MouseEvent<HTMLButtonElement>,
     link: { path: string; label: string; section: string },
   ) => {
-    if (pathname === "/") {
-      // If on homepage, scroll to section
-      e.preventDefault();
-      scrollToSection(link.section);
-      setMenuOpen(false);
-    }
-    // If on different page, let Next.js handle the navigation
+    e.preventDefault();
+    scrollToSection(link.section);
+    setMenuOpen(false);
   };
 
-  const isActive = (path: string) => {
-    if (path === "/") return pathname === "/";
-    return pathname === path || pathname.startsWith(path + "/");
+  const isActive = (section: string) => {
+    if (typeof window === "undefined") return false;
+    const element = document.getElementById(section);
+    if (element) {
+      const rect = element.getBoundingClientRect();
+      return rect.top <= 100 && rect.bottom >= 100;
+    }
+    return false;
   };
 
   // Close menu on route change
@@ -77,30 +81,17 @@ export function Header() {
           <nav className="hidden md:flex flex-1 justify-center">
             <ul className="flex items-center gap-6 lg:gap-8">
               {navLinks.map((link) => (
-                <li key={link.path}>
-                  {link.path === "/" ? (
-                    <button
-                      onClick={() => scrollToSection(link.section)}
-                      className={`text-sm lg:text-[15px] font-medium transition-colors duration-150 cursor-pointer ${
-                        isActive(link.path)
-                          ? "text-[#0e6b9e]"
-                          : "text-gray-700 hover:text-[#0e6b9e]"
-                      }`}
-                    >
-                      {link.label}
-                    </button>
-                  ) : (
-                    <Link
-                      href={link.path}
-                      className={`text-sm lg:text-[15px] font-medium transition-colors duration-150 ${
-                        isActive(link.path)
-                          ? "text-[#0e6b9e]"
-                          : "text-gray-700 hover:text-[#0e6b9e]"
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  )}
+                <li key={link.section}>
+                  <button
+                    onClick={(e) => handleNavigation(e, link)}
+                    className={`text-sm lg:text-[15px] font-medium transition-colors duration-150 cursor-pointer ${
+                      isActive(link.section)
+                        ? "text-[#0e6b9e] border-b-2 border-[#0e6b9e] pb-1"
+                        : "text-gray-700 hover:text-[#0e6b9e]"
+                    }`}
+                  >
+                    {link.label}
+                  </button>
                 </li>
               ))}
             </ul>
@@ -112,24 +103,29 @@ export function Header() {
               <span className="bg-gray-100 text-[11px] px-2.5 py-0.5 rounded font-medium text-gray-600">
                 Client Support →
               </span>
-              <span className="font-semibold text-gray-900 text-sm mt-0.5">
+              <a
+                href="tel:+8801602555023"
+                className="font-semibold text-gray-900 text-sm mt-0.5 hover:text-[#0e6b9e] transition-colors"
+              >
                 +880 1602-555023
-              </span>
+              </a>
             </div>
-            <Link href="/contact">
-              <button className="bg-[#1090af] hover:bg-[#0e6b9e] active:scale-[0.97] text-white font-semibold px-5 py-2.5 rounded-lg transition-all text-sm whitespace-nowrap cursor-pointer">
-                Contact Us
-              </button>
-            </Link>
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="bg-[#1090af] hover:bg-[#0e6b9e] active:scale-[0.97] text-white font-semibold px-5 py-2.5 rounded-lg transition-all text-sm whitespace-nowrap cursor-pointer"
+            >
+              Contact Us
+            </button>
           </div>
 
           {/* Tablet: CTA only */}
           <div className="hidden md:flex lg:hidden shrink-0">
-            <Link href="/contact">
-              <button className="bg-[#1090af] hover:bg-[#0e6b9e] text-white font-semibold px-4 py-2 rounded-lg transition-colors text-sm cursor-pointer">
-                Contact Us
-              </button>
-            </Link>
+            <button
+              onClick={() => scrollToSection("contact")}
+              className="bg-[#1090af] hover:bg-[#0e6b9e] text-white font-semibold px-4 py-2 rounded-lg transition-colors text-sm cursor-pointer"
+            >
+              Contact Us
+            </button>
           </div>
 
           {/* Mobile hamburger */}
@@ -166,46 +162,25 @@ export function Header() {
         <nav className="px-4 pt-2 pb-1">
           <ul className="flex flex-col">
             {navLinks.map((link) => (
-              <li key={link.path}>
-                {link.path === "/" ? (
-                  <button
-                    onClick={() => {
-                      scrollToSection(link.section);
-                      setMenuOpen(false);
-                    }}
-                    className={`w-full flex items-center justify-between px-3 py-3 rounded-xl text-[15px] font-medium transition-all duration-150 cursor-pointer ${
-                      isActive(link.path)
-                        ? "text-[#0e6b9e] bg-blue-50"
-                        : "text-gray-700 hover:text-[#0e6b9e] hover:bg-gray-50"
-                    }`}
-                  >
-                    {link.label}
-                    <ChevronRight
-                      size={16}
-                      className={
-                        isActive(link.path) ? "text-[#0e6b9e]" : "text-gray-300"
-                      }
-                    />
-                  </button>
-                ) : (
-                  <Link
-                    href={link.path}
-                    onClick={() => setMenuOpen(false)}
-                    className={`flex items-center justify-between px-3 py-3 rounded-xl text-[15px] font-medium transition-all duration-150 ${
-                      isActive(link.path)
-                        ? "text-[#0e6b9e] bg-blue-50"
-                        : "text-gray-700 hover:text-[#0e6b9e] hover:bg-gray-50"
-                    }`}
-                  >
-                    {link.label}
-                    <ChevronRight
-                      size={16}
-                      className={
-                        isActive(link.path) ? "text-[#0e6b9e]" : "text-gray-300"
-                      }
-                    />
-                  </Link>
-                )}
+              <li key={link.section}>
+                <button
+                  onClick={(e) => handleNavigation(e, link)}
+                  className={`w-full flex items-center justify-between px-3 py-3 rounded-xl text-[15px] font-medium transition-all duration-150 cursor-pointer ${
+                    isActive(link.section)
+                      ? "text-[#0e6b9e] bg-blue-50"
+                      : "text-gray-700 hover:text-[#0e6b9e] hover:bg-gray-50"
+                  }`}
+                >
+                  {link.label}
+                  <ChevronRight
+                    size={16}
+                    className={
+                      isActive(link.section)
+                        ? "text-[#0e6b9e]"
+                        : "text-gray-300"
+                    }
+                  />
+                </button>
               </li>
             ))}
           </ul>
@@ -224,15 +199,15 @@ export function Header() {
               <span>+880 1602-555023</span>
             </a>
           </div>
-          <Link
-            href="/contact"
-            onClick={() => setMenuOpen(false)}
-            className="shrink-0 cursor-pointer"
+          <button
+            onClick={() => {
+              scrollToSection("contact");
+              setMenuOpen(false);
+            }}
+            className="bg-[#1090af] cursor-pointer hover:bg-[#0e6b9e] active:scale-[0.97] text-white font-semibold px-5 py-2.5 rounded-lg transition-all text-sm whitespace-nowrap shrink-0"
           >
-            <button className="bg-[#1090af] cursor-pointer hover:bg-[#0e6b9e] active:scale-[0.97] text-white font-semibold px-5 py-2.5 rounded-lg transition-all text-sm whitespace-nowrap">
-              Contact Us
-            </button>
-          </Link>
+            Contact Us
+          </button>
         </div>
       </div>
     </>

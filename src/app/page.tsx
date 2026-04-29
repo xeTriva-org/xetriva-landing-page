@@ -1,8 +1,9 @@
 import { Banner } from "../components/Banner";
+import { Contact } from "../components/Contact";
 import { Projects } from "../components/Projects";
 import { Solutions } from "../components/Solutions";
-// import Team from "../components/Team";
 import { Testimonials } from "../components/Testimonials";
+import { WhyUs } from "../components/Whyus";
 
 export default function HomePage() {
   return (
@@ -16,11 +17,14 @@ export default function HomePage() {
       <div id="company">
         <Projects />
       </div>
-      {/* <div id="team">
-        <Team />
-      </div> */}
+      <div id="whyus">
+        <WhyUs />
+      </div>
       <div id="testimonials">
         <Testimonials />
+      </div>
+      <div id="contact">
+        <Contact />
       </div>
     </main>
   );
