@@ -64,17 +64,23 @@ export function Footer() {
             </h4>
             <ul className="space-y-3 text-base">
               <li className="flex items-start">
-                <MapPin className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0 text-white/80" />
+                <MapPin className="w-5 h-5 mr-3 mt-0.5 shrink-0 text-white/80" />
+                <span className="text-white/80 leading-relaxed">
+                  Sector 12, Uttara, Dhaka-1230
+                </span>
+              </li>
+              <li className="flex items-start">
+                <MapPin className="w-5 h-5 mr-3 mt-0.5 shrink-0 text-white/80" />
                 <span className="text-white/80 leading-relaxed">
                   Kach Bazer, Narinda, Wari, Dhaka-1203
                 </span>
               </li>
               <li className="flex items-center">
-                <Phone className="w-5 h-5 mr-3 flex-shrink-0 text-white/80" />
+                <Phone className="w-5 h-5 mr-3 shrink-0 text-white/80" />
                 <span className="text-white/80">+880 1602-555023</span>
               </li>
               <li className="flex items-center">
-                <Mail className="w-5 h-5 mr-3 flex-shrink-0 text-white/80" />
+                <Mail className="w-5 h-5 mr-3 shrink-0 text-white/80" />
                 <span className="text-white/80">info@xetriva.com</span>
               </li>
             </ul>

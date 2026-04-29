@@ -51,6 +51,9 @@ export function Contact() {
                     <p className="text-gray-700 text-sm leading-relaxed">
                       Kach Bazer, Narinda, Wari, Dhaka-1203
                     </p>
+                    <p className="text-gray-700 text-sm leading-relaxed">
+                      Sector 12, Uttara, Dhaka-1230
+                    </p>
                   </div>
                 </li>
                 <li className="flex items-center gap-4">
