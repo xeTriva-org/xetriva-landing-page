@@ -52,7 +52,7 @@ export function Footer() {
                 <Twitter className="w-5 h-5" />
               </a>
               <a
-                href="https://www.linkedin.com/company/xetriva/"
+                href="https://www.linkedin.com/company/xetriva"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white/70 transition-colors text-white/80"
@@ -61,7 +61,7 @@ export function Footer() {
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href="https://www.instagram.com/xetriva"
+                href="https://www.instagram.com/xetriva_official"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white/70 transition-colors text-white/80"
