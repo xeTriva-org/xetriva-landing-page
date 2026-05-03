@@ -12,6 +12,9 @@ import Link from "next/link";
 import logo from "../../public/logo/xetriva2.png";
 
 export function Footer() {
+  // Dynamic current year
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="bg-[#1090af] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-10">
@@ -31,26 +34,38 @@ export function Footer() {
             </p>
             <div className="flex space-x-5">
               <a
-                href="#"
+                href="https://www.facebook.com/xetriva"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-white/70 transition-colors text-white/80"
+                aria-label="Facebook"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://x.com/xetriva"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-white/70 transition-colors text-white/80"
+                aria-label="Twitter"
               >
                 <Twitter className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/company/xetriva/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-white/70 transition-colors text-white/80"
+                aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/xetriva"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="hover:text-white/70 transition-colors text-white/80"
+                aria-label="Instagram"
               >
                 <Instagram className="w-5 h-5" />
               </a>
@@ -77,11 +92,23 @@ export function Footer() {
               </li>
               <li className="flex items-center">
                 <Phone className="w-5 h-5 mr-3 shrink-0 text-white/80" />
-                <span className="text-white/80">+880 1602-555023</span>
+                <a
+                  href="https://wa.me/8801602555023"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white/80 hover:text-white transition-colors"
+                >
+                  +880 1602-555023
+                </a>
               </li>
               <li className="flex items-center">
                 <Mail className="w-5 h-5 mr-3 shrink-0 text-white/80" />
-                <span className="text-white/80">info@xetriva.com</span>
+                <a
+                  href="mailto:info@xetriva.com"
+                  className="text-white/80 hover:text-white transition-colors"
+                >
+                  info@xetriva.com
+                </a>
               </li>
             </ul>
           </div>
@@ -90,7 +117,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-white/20 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
           <p className="text-sm text-white/70">
-            © 2026 Xetriva. All rights reserved.
+            © {currentYear} Xetriva. All rights reserved.
           </p>
           <div className="flex space-x-8">
             <Link

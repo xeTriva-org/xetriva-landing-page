@@ -62,6 +62,9 @@ export function Header() {
     };
   }, [menuOpen]);
 
+  // WhatsApp phone number (remove any non-digit characters)
+  const whatsappNumber = "8801602555023"; // Formatted for WhatsApp API
+
   return (
     <>
       <header className="sticky top-0 z-50 bg-white border-b border-gray-200 shadow-sm">
@@ -104,9 +107,12 @@ export function Header() {
                 Client Support →
               </span>
               <a
-                href="tel:+8801602555023"
-                className="font-semibold text-gray-900 text-sm mt-0.5 hover:text-[#0e6b9e] transition-colors"
+                href={`https://wa.me/${whatsappNumber}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-gray-900 text-sm mt-0.5 hover:text-[#0e6b9e] transition-colors flex items-center gap-1"
               >
+                <Phone size={13} className="text-green-600" />
                 +880 1602-555023
               </a>
             </div>
@@ -192,10 +198,12 @@ export function Header() {
               Client Support →
             </span>
             <a
-              href="tel:+8801602555023"
+              href={`https://wa.me/${whatsappNumber}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="font-semibold text-gray-900 text-sm flex items-center gap-1.5 hover:text-[#0e6b9e] transition-colors"
             >
-              <Phone size={13} className="text-[#0e6b9e] shrink-0" />
+              <Phone size={13} className="text-green-600 shrink-0" />
               <span>+880 1602-555023</span>
             </a>
           </div>
